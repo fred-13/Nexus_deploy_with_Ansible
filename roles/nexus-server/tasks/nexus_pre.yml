@@ -1,0 +1,28 @@
+---
+- name: Add Nexus Group
+  group:
+    name: "{{ nexus_group }}"
+
+- name: Add Nexus User
+  user:
+    name: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    shell: /bin/bash
+    home: "{{ nexus_install_dir }}"
+
+- name: Ensure Java is installed
+  become: yes
+  yum: name={{ java }} state=present
+
+- name: Configure FireWall | Open port Nexus
+  firewalld:
+    port: 8081/tcp
+    permanent: true
+    state: enabled
+  register: change_rules
+
+- name: Configure FireWall | Restart firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  when: change_rules.changed
