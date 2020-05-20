@@ -1,9 +1,8 @@
 ---
 - name: Download Nexus
   unarchive:
-    src: "{{ nexus_download_url }}"
+    src: "{{ nexus_archive }}"
     dest: "{{ nexus_install_tmp_base_dir }}"
-    remote_src: yes
     creates: "{{ nexus_service_file_path }}"
 
 - name: Install Nexus

@@ -1,6 +1,6 @@
 ---
 nexus_version: 3.23.0-03
-nexus_download_url: "https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-{{ nexus_version }}-unix.tar.gz"
+nexus_archive: "nexus-{{ nexus_version }}-unix.tar.gz"
 nexus_install_tmp_base_dir: /tmp
 nexus_install_tmp_dir_name: "nexus-{{ nexus_version }}"
 nexus_install_tmp_dir: "{{ nexus_install_tmp_base_dir }}/{{ nexus_install_tmp_dir_name }}"
@@ -15,9 +15,9 @@ nexus_app_port: "8081"
 nexus_app_host: "0.0.0.0"
 
 # Example memory for 8GB host ref:https://help.sonatype.com/repomanager3/system-requirements#SystemRequirements-Memory
-nexus_vmoptions_xms: "1024M"
-nexus_vmoptions_xmx: "1024M"
-nexus_vmoptions_maxdirectmem: "1024M"
+nexus_vmoptions_xms: "2048M"
+nexus_vmoptions_xmx: "2048M"
+nexus_vmoptions_maxdirectmem: "2048M"
 
 nexus_user: nexus
 nexus_group: nexus

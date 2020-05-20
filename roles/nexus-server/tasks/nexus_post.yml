@@ -30,20 +30,10 @@
     dest: "{{ nexus_config_file_path }}"
   notify: Restart Nexus
 
-- name: Install lsyncd (RedHat) (Optional)
-  yum:
-    name: https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/l/lsyncd-2.2.2-1.el7.x86_64.rpm
-    state: present
-  when:
-    - ansible_os_family == "RedHat"
-    - install_lsyncd is defined
-    - install_lsyncd
-
-
 - name: Wait until initial admin password is appear
   register: nexus_is_find_init_token
   wait_for:
-    timeout: 60
+    timeout: 120
     path: "{{ nexus_admin_init_password_path }}"
   ignore_errors: yes
 
