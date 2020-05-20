@@ -26,3 +26,5 @@
     name: firewalld
     state: reloaded
   when: change_rules.changed
+  tags:
+  - skip_ansible_lint
